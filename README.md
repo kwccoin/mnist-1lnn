@@ -30,3 +30,12 @@ The `/screenshots` folder contains screenshots of running the program on my 2010
 
 The `/data` folder contains the original MNIST database files.
 
+### for running under xcode
+
+Need to use cross platfrom external build system
+Import
+change the main off the main and not subdir /bin  (may be scheme can help but not sure how)
+Create a Build scheme
+Any existing binary will create a no the right os message and ask you to set minimum platform
+Just delete the old binary it would be ok
+

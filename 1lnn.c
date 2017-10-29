@@ -9,7 +9,7 @@
 #include <string.h>
 #include <math.h>
 
-#include "mnist-utils.h"
+#include "util/mnist-utils.h"
 #include "1lnn.h"
 
 

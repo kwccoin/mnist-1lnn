@@ -27,9 +27,9 @@
 #include <math.h>
 #include <time.h>
 
-#include "screen.h"
-#include "mnist-utils.h"
-#include "mnist-stats.h"
+#include "util/screen.h"
+#include "util/mnist-utils.h"
+#include "util/mnist-stats.h"
 #include "1lnn.h"
 
 
