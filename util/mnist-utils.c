@@ -123,7 +123,7 @@ void readImageFileHeader(FILE *imageFile, MNIST_ImageFileHeader *ifh){
     
     fclose(flog);
     
-    test()
+    test();
     
 }
 
