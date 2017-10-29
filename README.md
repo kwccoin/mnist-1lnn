@@ -38,4 +38,9 @@ change the main off the main and not subdir /bin  (may be scheme can help but no
 Create a Build scheme
 Any existing binary will create a no the right os message and ask you to set minimum platform
 Just delete the old binary it would be ok
+but once build you have to delete from outside
+or you can delete the run scheme and add doc and ... it seems strange how it works
 
+sometimes work sometimes not; just go to console and run it over there instead
+
+in this case I remove back to original
