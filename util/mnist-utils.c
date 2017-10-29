@@ -48,17 +48,81 @@ void readImageFileHeader(FILE *imageFile, MNIST_ImageFileHeader *ifh){
     ifh->imgWidth    =0;
     ifh->imgHeight   =0;
     
+    FILE *flog;
+    flog = fopen("/Users/blue5/Documents/GitHub-blue5/mnist-1lnn/ifhdng_log1.txt", "w+");
+    
+    fprintf (flog,"ifh->magicNumber before: %08x\n",
+            (unsigned int) ifh->magicNumber ); /*|
+            (unsigned int) ifh->magicNumber << 8); */
+   
     fread(&ifh->magicNumber, 4, 1, imageFile);
     ifh->magicNumber = flipBytes(ifh->magicNumber);
     
+    /* the hex is ok i.e. */
+    /* 00000000: 00 00 08 03 00 00 27 10 	......'.   magic no: 0x0803         image no: 0x2710 i.e.10k images
+     00000008: 00 00 00 1C 00 00 00 1C 	........   width:    0x1C   i.e. 28 height:   0x1C   i.e. 28 */
+    /* ifh->magicNumber before: 00000000
+     ifh->magicNumber after: 00000803
+     
+     ifh->maxImages before: 00000000
+     ifh->maxImages after: 00002710
+     
+     ifh->imgWidth before: 00000000
+     ifh->imgWidth after: 0000001c
+     
+     ifh->imgHeight before: 00000000
+     ifh->imgHeight after: 0000001c */
+
+    /* the little endian assumption is that if you have a no 0A0B0C0D
+        it will stored starting with 0D0C0B0A LSB first
+        in memory or in file i.e. receive the least sign. no. first
+        -- against network byte order --
+        and hence if the file hex is 00 00 27 10 as above
+        the number read assume little endian it will be read and becomes 10270000
+        strange way to store it but that is how it was stored 
+        hence need flip */
+    
+    fprintf (flog,"ifh->magicNumber after: %08x\n\n",
+            (unsigned int) ifh->magicNumber ); /*|
+            (unsigned int) ifh->magicNumber << 8); */
+
+    fprintf (flog,"ifh->maxImages before: %08x\n",
+            (unsigned int) ifh->maxImages ); /*|
+            (unsigned int) ifh->maxImages << 8); */
+
     fread(&ifh->maxImages, 4, 1, imageFile);
     ifh->maxImages = flipBytes(ifh->maxImages);
     
+    fprintf (flog,"ifh->maxImages after: %08x\n\n",
+            (unsigned int) ifh->maxImages ); /*|
+            (unsigned int) ifh->maxImages << 8); */
+    
+    fprintf (flog,"ifh->imgWidth before: %08x\n",
+            (unsigned int) ifh->imgWidth ); /*|
+            (unsigned int) ifh->imgWidth << 8); */
+    
+   
     fread(&ifh->imgWidth, 4, 1, imageFile);
     ifh->imgWidth = flipBytes(ifh->imgWidth);
     
+    fprintf (flog,"ifh->imgWidth after: %08x\n\n",
+            (unsigned int) ifh->imgWidth ); /*|
+            (unsigned int) ifh->imgWidth << 8); */
+    
+    fprintf (flog,"ifh->imgHeight before: %08x\n",
+            (unsigned int) ifh->imgHeight ); /*|
+            (unsigned int) ifh->imgHeight << 8); */
+    
+    
     fread(&ifh->imgHeight, 4, 1, imageFile);
     ifh->imgHeight = flipBytes(ifh->imgHeight);
+    
+    fprintf (flog,"ifh->imgHeight after: %08x\n\n",
+            (unsigned int) ifh->imgHeight ); /*|
+            (unsigned int) ifh->imgHeight << 8); */
+    
+    fclose(flog);
+    
 }
 
 

@@ -1,0 +1,12 @@
+ifh->magicNumber before: 00000000
+ifh->magicNumber after: 00000803
+
+ifh->maxImages before: 00000000
+ifh->maxImages after: 00002710
+
+ifh->imgWidth before: 00000000
+ifh->imgWidth after: 0000001c
+
+ifh->imgHeight before: 00000000
+ifh->imgHeight after: 0000001c
+
