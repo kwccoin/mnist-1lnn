@@ -132,6 +132,7 @@ void readImageFileHeader(FILE *imageFile, MNIST_ImageFileHeader *ifh){
 //#include <string.h>
 // for future testng of num wtiting issues
 
+// int main() {
 void testf() {
    FILE *fp;
    char c[] = "this is tutorialspoint";
@@ -152,6 +153,41 @@ void testf() {
    fclose(fp);
    
    // return(0);
+   
+   //FILE *fp;
+      int i = 11;
+   
+      /* open the file */
+      fp = fopen("file.txt", "a");
+      if (fp == NULL) {
+         printf("I couldn't open results.dat for appending.\n");
+         exit(0);
+      }
+   
+      /* write to the file */
+      fprintf(fp, "%d, %d\n", i, i*i);
+   
+      /* close the file */
+      fclose(fp);
+   
+   //
+   
+         FILE *fp;
+      int i, isquared;
+   
+      /* open the file */
+      fp = fopen("file.txt", "r");
+      if (fp == NULL) {
+         printf("I couldn't open results.dat for reading.\n");
+         exit(0);
+      }
+   
+      while (fscanf(fp, "%d,%d\n", &i, &isquared) == 2)
+         printf("i: %d,  isquared: %d\n", i, isquared);
+   
+      /* close the file */
+      fclose(fp);
+   
 }
 
 
